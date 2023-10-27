@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHECKIN SUCCESSFUL</title>
     <style>
+
         body {
             background-color: #252525;
-            font-family: Ubuntu; /* Change to desired font family */
+            font-family: Ubuntu, math;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 18px;
-            text-align: center; /* Center align the text */
-            color: #f70019; /* Change font color to dark gray */
+            font-size: 20px;
+            text-align: center;
+            color: #f70019;
+            {#background-size: cover; /* Cover the entire background */#}
+            {#background-repeat: no-repeat; /* Prevent image repetition */#}
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f2f2f2;
+            background-color: #000000;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -50,13 +55,13 @@
         }
     </style>
 </head>
-<body>
+<body style="background-image: url('{% static 'smash.png' %}');">
         {% csrf_token %}
-        {% load static %}
 
     <div class="container">
-        <img src="static/smash.png" alt="Description of the image">
         <h1>Check-in Successful!</h1>
+
+
         <p>Thank you for checking in. Your remaining sets have been updated.</p>
         <p>Subscriber: {{ subscriber }}</p> <!-- Use 'name' instead of just 'subscriber' -->
         <p>Subscriber ID: {{ subscriber.id }}</p>
