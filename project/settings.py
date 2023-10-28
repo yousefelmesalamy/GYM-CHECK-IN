@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # 'django_rest_passwordreset',
     'django_filters',
     # apps
-    'CheckIn',
+    'CheckIn'
 ]
 REST_FRAMEWORK = {
 
@@ -90,7 +90,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -149,9 +149,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'templates/static')
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -184,6 +186,8 @@ JAZZMIN_SETTINGS = {  # Links to put along the top menu
         {"name": "MEMBERSHIP TYPES", "url": "http://127.0.0.1:8000/admin/CheckIn/membershiptype/"},
         {"name": "ACTIVE MEMBERSHIPS", "url": "http://127.0.0.1:8000/admin/CheckIn/inmembership/"},
         {"name": "MEMBERS", "url": "http://127.0.0.1:8000/admin/CheckIn/member/", "new_window": False},
+        # to make the button for check in
+        # {"name": "CHECK IN", "url": "http://127.0.0.1:8000/gym/check_in/<int:pk>/", "new_window": False},
 
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
@@ -192,10 +196,11 @@ JAZZMIN_SETTINGS = {  # Links to put along the top menu
     "site_title": "SMASH GYM",
     "site_header": "SMASH GYM",
     "site_brand": "SMASH GYM",
-    "site_logo": "smash.png",
+    "site_icon": "logo/smash.png",
+    # Add your own branding here
+    "site_logo": 'logo/smash.png',
     "welcome_sign": "Welcome to SMASH GYM",
     "show_sidebar": True,
-    "related_modal_active": True,
     "show_ui_builder": True,
     "changeform_format": "horizontal_tabs",  # or "vertical_tabs"
     "navigation_expanded": False,
