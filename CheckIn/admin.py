@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import USER, Coach, Shift, CoachShift, MembershipType, InMemberShip, CheckIn, Member
 from django.utils.html import format_html
+from django.contrib.admin import AdminSite
+from django.template.response import TemplateResponse
+from django.urls import path
 
 
 # Register your models here.
@@ -104,19 +107,36 @@ class MembershipTypeAdmin(admin.ModelAdmin):
     duration_in_sets.short_description = 'Duration in Sets'
 
 
+# -----------------CUSTOM ADMIN SITE-----------------#
+from django.urls import reverse
+from django.utils.html import format_html
+
+
+def redirect_to_check_in(modeladmin, request, queryset):
+    # Assuming subscriber_id is the primary key of your model
+    for obj in queryset:
+        url = reverse('check_in', args=[obj.subscriber_id])
+        return format_html(f'<a class="button" href="{url}">Check In</a>')
+
+
+redirect_to_check_in.short_description = "Check In"  # Display name for the action
+
+
+# ---------------------------------------------------------
 class InMemberShipAdmin(admin.ModelAdmin):
     fieldsets = [
         ('InMemberShip', {'fields': ['member', 'membership', 'sets_remaining', 'checkin_count']})
         , ('Date', {'fields': ['end_date', ]})
     ]
 
-    list_display = ('member', 'membership', 'sets_remaining', 'checkin_count', 'start_date', 'end_date')
+    list_display = ('id', 'member', 'membership', 'sets_remaining', 'checkin_count', 'start_date', 'end_date')
     list_filter = ('member', 'membership', 'sets_remaining', 'checkin_count', 'start_date', 'end_date')
     list_display_links = ('member', 'membership', 'sets_remaining', 'checkin_count',)
     search_fields = ('member', 'membership', 'sets_remaining', 'checkin_count', 'start_date', 'end_date')
     ordering = ('member', 'membership', 'sets_remaining', 'checkin_count', 'start_date', 'end_date')
-    # readonly_fields = ['sets_remaining', ]
+    readonly_fields = ['checkin_count']
     empty_value_display = "EMPTY OR DISABLED BY ADMIN"
+    actions = [redirect_to_check_in]
 
 
 class CheckInAdminSite(admin.ModelAdmin):

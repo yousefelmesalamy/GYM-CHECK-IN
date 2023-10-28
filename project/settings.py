@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # 'django_rest_passwordreset',
     'django_filters',
     # apps
-    'CheckIn'
+    'CheckIn',
 ]
 REST_FRAMEWORK = {
 
@@ -192,7 +192,7 @@ JAZZMIN_SETTINGS = {  # Links to put along the top menu
     "site_title": "SMASH GYM",
     "site_header": "SMASH GYM",
     "site_brand": "SMASH GYM",
-    "site_logo": "static/smash.png",
+    "site_logo": "smash.png",
     "welcome_sign": "Welcome to SMASH GYM",
     "show_sidebar": True,
     "related_modal_active": True,

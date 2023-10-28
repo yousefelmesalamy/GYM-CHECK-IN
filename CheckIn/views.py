@@ -70,7 +70,7 @@ class InmemberShipViewSet(viewsets.ModelViewSet):
 def check_in(request, subscriber_id):
     subscriber = get_object_or_404(InMemberShip, pk=subscriber_id)
     subscriber.check_in()
-    return render(request, 'check_in_success.html', {'subscriber': subscriber})
+    return render(request, 'admin/templates/check_in_success.html', {'subscriber': subscriber})
 
 
 from django.http import HttpResponse

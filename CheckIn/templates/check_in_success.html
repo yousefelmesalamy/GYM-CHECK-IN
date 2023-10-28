@@ -38,21 +38,46 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            margin: auto;
+            text-align: left;
+
         }
 
         th, td {
             border: 1px solid #ccc;
             padding: 8px;
-            text-align: left;
+            text-align: center;
+            margin: auto;
         }
 
         th {
             background-color: #f2f2f2;
+            margin: auto;
+            text-align: center;
         }
 
         tr:nth-child(even) {
             background-color: #f9f9f9;
+            margin: auto;
+            text-align: center;
         }
+        .custom-button {
+            background-color: #ffffff;
+            color: #000000;
+            font-family:Ubuntu, math;
+            font-weight: bold;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s; /* Added for hover effect */
+        }  .custom-button:hover {
+                    background-color: #9b0000; /* New background color on hover */}
     </style>
 </head>
 <body style="background-image: url('{% static 'smash.png' %}');">
@@ -60,8 +85,6 @@
 
     <div class="container">
         <h1>Check-in Successful!</h1>
-
-
         <p>Thank you for checking in. Your remaining sets have been updated.</p>
         <p>Subscriber: {{ subscriber }}</p> <!-- Use 'name' instead of just 'subscriber' -->
         <p>Subscriber ID: {{ subscriber.id }}</p>
@@ -73,6 +96,15 @@
             <p style="color: red; font-weight: bold;">Sorry, you have no more sets remaining.</p>
         {% endif %}
 
+            </style>
+
+            <button class="custom-button" onclick="redirectToAdmin()">GO TO ADMIN PANEL</button>
+
+            <script>
+                function redirectToAdmin() {
+                    window.location.href = 'http://127.0.0.1:8000/admin/CheckIn/member/';
+                }
+            </script>
 
         {% if subscriber.end_date and subscriber.end_date <= now %}
             <p style="color: red; font-weight: bold;">Sorry, your membership has expired.</p>
