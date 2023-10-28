@@ -189,7 +189,7 @@ class CheckIn(models.Model):
         self.membership.save()
 
     def __str__(self):
-        return self.membership.user.username + '   -   ' + self.membership.membership.name + '   -   ' + str(
+        return self.membership.member.first_name + '   -   ' + self.membership.membership.name + '   -   ' + str(
             self.checkin_datetime)
 
 

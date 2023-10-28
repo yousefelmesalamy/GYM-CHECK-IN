@@ -55,7 +55,7 @@
         {% load static %}
 
     <div class="container">
-        <img src="static/smash.png" alt="Description of the image">
+        <img src="{% static 'logo/smash.png' %}" alt="Description of the image">
         <h1>Check-in Successful!</h1>
         <p>Thank you for checking in. Your remaining sets have been updated.</p>
         <p>Subscriber: {{ subscriber }}</p> <!-- Use 'name' instead of just 'subscriber' -->
