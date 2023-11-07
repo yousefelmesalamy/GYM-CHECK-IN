@@ -18,12 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.shortcuts import render
-# from knox.views import LoginView, LogoutAllView
+from django.views.generic import RedirectView
 
 
 urlpatterns = [
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),  # Redirect to the admin panel
     path("gym/", include("CheckIn.urls")),
 
 ]
