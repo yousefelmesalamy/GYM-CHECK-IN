@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USER ID </title>
+<style>
+        body {
+            background-color: #000000;
+            font-family: Ubuntu;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 18px;
+            text-align: center;
+            color: #f70019;
+            {#background-position: center; /* Center the image */#}
+            background-size: 50% 100%; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed; /* Fixed background position */        }
+  .container {
+    max-width: 400px;
+    margin: 250px 250px 20px auto; /* Adjust the values here */
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    margin-bottom: 20px;
+    color: #f70019;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 120px 15px 120px;
+    border: none;
+    {#border-radius: 4px;#}
+    cursor: pointer;
+    font-size: 16px;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  .custom-button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    {#border-radius: 4px;#}
+
+    padding: 15px 120px 15px 120px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Added for hover effect */
+  }
+    .custom-button:hover {
+    background-color: #535353;
+    }
+</style>
+</head>
+<body style="background-image: url('{% static 'smash.png' %}');">
+<div class="container">
+    <h1>USER ID</h1>
+    <form action="#" method="post"> <!-- This is where you add the form -->
+        {% csrf_token %} <!-- This token helps protect against Cross Site Request Forgery (CSRF) attacks -->
+        <input type="text" name="userID" id="userID" placeholder="ID" required>
+        <br>
+        <input type="submit" value="Submit">
+
+        {% if error_message %}
+          <p>{{ error_message }}</p>
+        {% endif %}
+
+    </form>
+     <button class="custom-button" onclick="redirectToAdmin()">ADMIN</button>
+        <script>
+            function redirectToAdmin() {
+                window.location.href = 'http://127.0.0.1:8000/admin/CheckIn/member/';
+            }
+        </script>
+</div>
+</body>
+</html>

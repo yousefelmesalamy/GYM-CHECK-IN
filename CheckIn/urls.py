@@ -14,6 +14,7 @@ urlpatterns = [
      # path('logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
      # path('logoutall/', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
      path('check_in/<int:subscriber_id>/', check_in, name='check_in'),
+     path('id_ask/', ask_for_id, name='id_ask'),
 
 ]
 urlpatterns += router.urls
