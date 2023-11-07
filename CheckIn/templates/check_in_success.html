@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHECKIN SUCCESSFUL</title>
     <style>
         body {
             background-color: #252525;
-            font-family: Ubuntu; /* Change to desired font family */
+            font-family: Ubuntu;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 18px;
-            text-align: center; /* Center align the text */
-            color: #f70019; /* Change font color to dark gray */
+            text-align: center;
+            color: #f70019;
+            {#background-size: cover; /* Cover the entire background */#}
+            {#background-repeat: no-repeat; /* Prevent image repetition */#}
+            background-attachment: fixed; /* Fixed background position */
         }
         .container {
             max-width: 800px;
@@ -29,16 +34,20 @@
             background-color: #f2f2f2;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+
         }
         table {
             border-collapse: collapse;
             width: 100%;
+            margin: auto;
+            text-align: center;
         }
 
         th, td {
             border: 1px solid #ccc;
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
 
         th {
@@ -48,21 +57,45 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        .custom-button {
+            background-color: #9b0000;
+            color: #ffffff;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            {#float: left; /* Added to align the button to the left */#}
+            transition: background-color 0.3s; /* Added for hover effect */
+        }
+        .custom-button:hover {
+        background-color: #ff0000;
+        }
     </style>
 </head>
-<body>
+<body style="background-image: url('{% static 'smash.png' %}');">
         {% csrf_token %}
         {% load static %}
 
     <div class="container">
-        <img src="static/smash.png" alt="Description of the image">
         <h1>Check-in Successful!</h1>
+        <img src="{% static 'smash.png' %}" alt="Example Image">
         <p>Thank you for checking in. Your remaining sets have been updated.</p>
         <p>Subscriber: {{ subscriber }}</p> <!-- Use 'name' instead of just 'subscriber' -->
         <p>Subscriber ID: {{ subscriber.id }}</p>
         <p>Subscriber checkin count: {{ subscriber.checkin_count }}</p>
         <p>Remaining Sets: {{ subscriber.sets_remaining }}</p>
         <P>MEMBERSHIP EXPIRE IN : {{subscriber.end_date}}</P>
+        <button class="custom-button" onclick="redirectToAdmin()">Go to Admin Page</button>
+        <script>
+            function redirectToAdmin() {
+                window.location.href = 'http://127.0.0.1:8000/admin/CheckIn/member/';
+            }
+        </script>
         {% if subscriber.sets_remaining == 0 %}
 
             <p style="color: red; font-weight: bold;">Sorry, you have no more sets remaining.</p>
