@@ -189,7 +189,7 @@ JAZZMIN_SETTINGS = {  # Links to put along the top menu
         {"name": "ACTIVE MEMBERSHIPS", "url": "http://127.0.0.1:8000/admin/CheckIn/inmembership/"},
         {"name": "MEMBERS", "url": "http://127.0.0.1:8000/admin/CheckIn/member/", "new_window": False},
         # to make the button for check in
-        # {"name": "CHECK IN", "url": "http://127.0.0.1:8000/gym/check_in/<int:pk>/", "new_window": False},
+        {"name": "CHECK IN", "url": "http://127.0.0.1:8000/gym/id_ask/", "new_window": False},
 
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
