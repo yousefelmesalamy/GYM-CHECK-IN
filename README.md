@@ -26,6 +26,8 @@ These easy instructions will help you get a copy of the project up and running o
 
     git clone https://github.com/yousefelmesalamy/GYM-CHECK-IN.git
 
+    2. install requirments.txt file
+
 ### Usage
 
 1. Activate your virtual environment (if using Pipenv)
