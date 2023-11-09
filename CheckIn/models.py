@@ -138,7 +138,7 @@ class InMemberShip(models.Model):
     membership = models.ForeignKey(MembershipType, on_delete=models.CASCADE, related_name='membership_member')
     start_date = models.DateField(auto_now=True, auto_now_add=False, null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
-    sets_remaining = models.IntegerField(default=30, null=True, blank=True)
+    sets_remaining = models.IntegerField(null=True, blank=True)
     checkin_count = models.IntegerField(default=0, null=False, blank=True)
     checkin_datetime = models.DateTimeField(null=True, blank=True)
 
