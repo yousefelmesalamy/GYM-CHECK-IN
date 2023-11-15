@@ -19,3 +19,4 @@ def check_and_send_emails():
 
     for user_email in users_low_sets:
         send_low_sets_remaining_email.delay(user_email)
+
