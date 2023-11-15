@@ -73,6 +73,7 @@ class Member(models.Model):
     first_name = models.CharField(max_length=30, null=False, blank=False)
     last_name = models.CharField(max_length=30, null=False, blank=False)
     phone_number = models.CharField(max_length=30, null=False, blank=False)
+    email = models.EmailField(unique=True, null=True, blank=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
