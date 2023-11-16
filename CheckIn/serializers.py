@@ -14,6 +14,7 @@ class CoachSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
 class ShiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shift
